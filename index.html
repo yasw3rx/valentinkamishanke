@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мишутка, ты будешь моей валентинкой?</title>
+    <style>
+        body { font-family: Arial; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+        h1 { font-size: 2.5em; margin-bottom: 2em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .buttons { display: flex; gap: 30px; }
+        button { padding: 20px 40px; font-size: 1.3em; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; }
+        #yesBtn { background: #4CAF50; color: white; }
+        #noBtn { background: #f44336; color: white; position: absolute; }
+        .success { display: none; text-align: center; }
+        .success img { width: 250px; height: 250px; }
+    </style>
+</head>
+<body>
+    <h1>Мишутка, ты будешь моей валентинкой? 💕</h1>
+    <div class="buttons">
+        <button id="yesBtn">Да 😍</button>
+        <button id="noBtn">Нет 🙅‍♀️</button>
+    </div>
+    <div id="success" class="success">
+        <h2>Ура! ❤️</h2>
+        <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Nmc4ZGdmd2t1djN2bW1wa3BpMXFrcTNkYzVjNGM3dG8zMGhiNDI2eCZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/MDJ9IbxxvDUQM/giphy.gif" alt="Празднуем">
+        <p>Теперь мы вместе! 💑</p>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const success = document.getElementById('success');
+        const buttons = document.querySelector('.buttons');
+
+        noBtn.addEventListener('click', () => {
+            const maxX = window.innerWidth - 150;
+            const maxY = window.innerHeight - 200;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+            noBtn.style.transform = 'translate(-50%, -50%)';
+        });
+
+        yesBtn.addEventListener('click', () => {
+            buttons.style.display = 'none';
+            success.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
