@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <title>💕Мишутка, ты будешь моей валентинкой? 💕</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: Arial, sans-serif; /* Заменил шрифт */
+            font-family: Arial, sans-serif; 
             background: linear-gradient(-45deg, #ff6b9d, #c44569, #f9844a, #fec5bf);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
@@ -19,7 +17,7 @@
             justify-content: center; 
             overflow: hidden;
             position: relative;
-            text-align: center; /* Центрируем текст */
+            text-align: center;
         }
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
@@ -28,11 +26,10 @@
         }
         .heart { 
             position: absolute; 
-            width: 20px; 
-            height: 18px; 
-            animation: float 6s infinite linear; 
             font-size: 20px;
             pointer-events: none;
+            z-index: 1;
+            animation: float 6s infinite linear; 
         }
         .heart:nth-child(1) { left: 20%; animation-delay: 0s; }
         .heart:nth-child(2) { left: 40%; animation-delay: 1s; }
@@ -45,33 +42,33 @@
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
         h1 { 
-            font-size: 2.8em; /* Уменьшил размер */
+            font-size: 2em; 
             color: white; 
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
             margin-bottom: 2em;
-            max-width: 90%; /* Не выезжает за экран */
+            max-width: 90%;
             line-height: 1.2;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        .buttons { 
-            display: flex; 
-            gap: 30px; 
-            position: relative; 
             z-index: 10;
         }
+        .buttons { 
+            position: relative; 
+            z-index: 20;
+            display: flex; 
+            gap: 25px; 
+            margin: 0 auto;
+        }
         button { 
-            padding: 20px 40px; 
-            font-size: 1.5em; 
+            padding: 18px 35px; 
+            font-size: 1.3em; 
             border: none; 
             border-radius: 50px; 
             cursor: pointer; 
             transition: all 0.4s;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             font-family: Arial, sans-serif;
+            z-index: 30;
+            position: relative;
+            touch-action: manipulation; /* Для мобильных */
         }
         #yesBtn { 
             background: linear-gradient(45deg, #ff6b9d, #c44569); 
@@ -80,20 +77,24 @@
         #noBtn { 
             background: linear-gradient(45deg, #f72585, #b5179e); 
             color: white; 
-            position: absolute;
+        }
+        #noBtn.moved {
+            position: fixed !important;
             animation: wiggle 0.5s infinite;
-            z-index: 20;
+            z-index: 40;
+            pointer-events: auto;
         }
         @keyframes wiggle {
             0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
+            25% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
         }
         .success { 
             display: none; 
             text-align: center; 
             animation: bounceIn 1s ease;
             width: 100%;
+            z-index: 50;
         }
         @keyframes bounceIn {
             0% { transform: scale(0); opacity: 0; }
@@ -101,37 +102,35 @@
             100% { transform: scale(1); opacity: 1; }
         }
         .success img {
-            width: 250px; 
-            height: 250px; 
+            width: 220px; 
+            height: 220px; 
             border-radius: 50%; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .success h2 { 
-            font-size: 2.5em; 
+            font-size: 2em; 
             color: #ff6b9d; 
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .success p { 
-            font-size: 1.4
-            em; 
+            font-size: 1.2em; 
             color: white; 
             margin-bottom: 20px;
         }
-        /* НАШИ ФОТО */
         .photo-gallery {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             max-width: 90%;
             margin: 0 auto;
         }
         .photo {
-            width: 100px;
-            height: 100px;
-            border-radius: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
             object-fit: cover;
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
             border: 3px solid #ff6b9d;
@@ -149,27 +148,27 @@
             background: linear-gradient(45deg, #ff6b9d, #c44569); 
             color: white; 
             border: none; 
-            padding: 12px 18px; 
+            padding: 10px 15px; 
             border-radius: 25px; 
             cursor: pointer; 
             font-size: 14px; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            touch-action: manipulation;
         }
         audio { display: none; }
     </style>
 </head>
 <body>
-    <!-- Летающие сердечки -->
     <div class="heart">💖</div>
     <div class="heart">💕</div>
     <div class="heart">💗</div>
     <div class="heart">💝</div>
     
-    <!-- 🎵 КАСПИЙСКИЙ ГРУЗ - ЛЮБОВЬ (стиль) -->
+    <!-- 🎵 ТВОЯ ПЕСНЯ -->
     <audio id="bgMusic" loop volume="0.3">
         <source src="https://audio.jukehost.co.uk/5cXUbhzKOXTnTQkbRmSRCPkPynGxv83m" type="audio/mpeg">
     </audio>
-    <button id="musicToggle">🎵 Любовь</button>
+    <button id="musicToggle">🎵</button>
 
     <h1>Мишутка, ты будешь моей валентинкой? 💕</h1>
     
@@ -183,12 +182,10 @@
         <h2>Урааа! ❤️🔥</h2>
         <p>Теперь мы вместе навсегда! 💑✨</p>
         
-        <!-- НАШИ ФОТО - ЗАМЕНИ ССЫЛКИ! -->
         <div class="photo-gallery">
-            <img src="https://ru.files.fm/f/sw8gz4xqpd" class="photo" alt="Мы 💕">
-            <img src="https://ru.files.fm/f/swe62cjjug" class="photo" alt="Вместе ❤️">
-            <img src="https://ru.files.fm/u/btrb5jsg3y" class="photo" alt="Любовь 💖">
-            <img src="https://ru.files.fm/f/erz8dygcx6" class="photo" alt="Навсегда ✨">
+            <img src="https://via.placeholder.com/300x300/ff6b9d/fff?text=Фото+1" class="photo">
+            <img src="https://via.placeholder.com/300x300/c44569/fff?text=Фото+2" class="photo">
+            <img src="https://via.placeholder.com/300x300/f9844a/fff?text=Фото+3" class="photo">
         </div>
     </div>
 
@@ -200,41 +197,38 @@
         const music = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
 
-        // КНОПКА НЕТ - НЕ УЛЕТАЕТ Далеко
-        noBtn.addEventListener('click', () => {
-            const rect = buttons.getBoundingClientRect();
-            const maxX = window.innerWidth - 120;  // Оставляем отступы
-            const maxY = window.innerHeight - 150;
-            const newX = Math.max(50, Math.min(maxX, Math.random() * maxX));
-            const newY = Math.max(100, Math.min(maxY, Math.random() * maxY));
+        // КНОПКА НЕТ
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            noBtn.classList.add('moved');
+            const maxX = window.innerWidth - 80;
+            const maxY = window.innerHeight - 100;
+            const newX = 40 + (Math.random() * (maxX - 80));
+            const newY = 80 + (Math.random() * (maxY - 160));
             
-            noBtn.style.position = 'fixed';
             noBtn.style.left = newX + 'px';
             noBtn.style.top = newY + 'px';
             noBtn.style.transform = 'translate(-50%, -50%)';
         });
 
-        // КНОПКА ДА + КОНФЕТТИ
-        yesBtn.addEventListener('click', () => {
+        // КНОПКА ДА
+        yesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             buttons.style.display = 'none';
-            success.style.display = 'block';
+            success.style.display = 'flex';
+            success.style.flexDirection = 'column';
             
-            for(let i = 0; i < 80; i++) {
+            // Конфетти
+            for(let i = 0; i < 40; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('div');
-                    confetti.innerHTML = ['❤️','💖','💕','✨','🌸','💫
-                                          '][Math.floor(Math.random()*6)];
-                    confetti.style.cssText = `
-                        position: fixed; left: ${Math.random() * 100}vw; top: -20px;
-                        font-size: 18px; pointer-events: none; z-index: 50;
-                        animation: float 4s linear forwards;
-                    `;
+                    confetti.innerHTML = ['❤️','💖','💕','✨'][Math.floor(Math.random()*4)];
+                    confetti.style.cssText = `position:fixed;left:${Math.random()*100}vw;top:-20px;font-size:16px;pointer-events:none;z-index:10;animation:float 3s linear forwards;`;
                     document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 4000);
-                }, i * 25);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 40);
             }
         });
-
         // МУЗЫКА
         musicToggle.addEventListener('click', () => {
             if (music.paused) {
@@ -248,10 +242,10 @@
             }
         });
 
-        // Автозапуск музыки по клику
-        document.addEventListener('click', () => {
+        // Автозапуск через 1 сек
+        setTimeout(() => {
             music.play().catch(() => {});
-        }, { once: true });
+        }, 1000);
     </script>
 </body>
 </html>
