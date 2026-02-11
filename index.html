@@ -8,7 +8,7 @@
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Dancing Script', cursive; 
+            font-family: Arial, sans-serif; /* Заменил шрифт */
             background: linear-gradient(-45deg, #ff6b9d, #c44569, #f9844a, #fec5bf);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
@@ -19,6 +19,7 @@
             justify-content: center; 
             overflow: hidden;
             position: relative;
+            text-align: center; /* Центрируем текст */
         }
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
@@ -30,6 +31,8 @@
             width: 20px; 
             height: 18px; 
             animation: float 6s infinite linear; 
+            font-size: 20px;
+            pointer-events: none;
         }
         .heart:nth-child(1) { left: 20%; animation-delay: 0s; }
         .heart:nth-child(2) { left: 40%; animation-delay: 1s; }
@@ -42,10 +45,12 @@
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
         h1 { 
-            font-size: 3.5em; 
+            font-size: 2.8em; /* Уменьшил размер */
             color: white; 
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 3em;
+            margin-bottom: 2em;
+            max-width: 90%; /* Не выезжает за экран */
+            line-height: 1.2;
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
@@ -54,28 +59,20 @@
         }
         .buttons { 
             display: flex; 
-            gap: 40px; 
+            gap: 30px; 
             position: relative; 
             z-index: 10;
         }
         button { 
-            padding: 25px 50px; 
-            font-size: 1.8em; 
+            padding: 20px 40px; 
+            font-size: 1.5em; 
             border: none; 
             border-radius: 50px; 
             cursor: pointer; 
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.4s;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            font-family: inherit;
-            position: relative;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
-        button::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; 
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
-        }
-        button:hover::before { left: 100%; }
         #yesBtn { 
             background: linear-gradient(45deg, #ff6b9d, #c44569); 
             color: white; 
@@ -84,18 +81,19 @@
             background: linear-gradient(45deg, #f72585, #b5179e); 
             color: white; 
             position: absolute;
-            transform: translate(-50%, -50%);
             animation: wiggle 0.5s infinite;
+            z-index: 20;
         }
         @keyframes wiggle {
-            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-            25% { transform: translate(-50%, -50%) rotate(-5deg); }
-            75% { transform: translate(-50%, -50%) rotate(5deg); }
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
         }
         .success { 
             display: none; 
             text-align: center; 
             animation: bounceIn 1s ease;
+            width: 100%;
         }
         @keyframes bounceIn {
             0% { transform: scale(0); opacity: 0; }
@@ -103,21 +101,45 @@
             100% { transform: scale(1); opacity: 1; }
         }
         .success img {
-            width: 300px; 
-            height: 300px; 
+            width: 250px; 
+            height: 250px; 
             border-radius: 50%; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             margin-bottom: 20px;
         }
-.success h2 { 
-            font-size: 3em; 
+        .success h2 { 
+            font-size: 2.5em; 
             color: #ff6b9d; 
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .success p { 
-            font-size: 1.5em; 
+            font-size: 1.4
+            em; 
             color: white; 
+            margin-bottom: 20px;
+        }
+        /* НАШИ ФОТО */
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border: 3px solid #ff6b9d;
+            transition: all 0.3s;
+        }
+        .photo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(255,107,157,0.6);
         }
         #musicToggle {
             position: fixed; 
@@ -130,7 +152,7 @@
             padding: 12px 18px; 
             border-radius: 25px; 
             cursor: pointer; 
-            font-size: 16px; 
+            font-size: 14px; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         audio { display: none; }
@@ -143,9 +165,9 @@
     <div class="heart">💗</div>
     <div class="heart">💝</div>
     
-    <!-- 🎵 МУЗЫКА -->
-    <audio id="bgMusic" loop volume="0.4">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3" type="audio/mpeg">
+    <!-- 🎵 КАСПИЙСКИЙ ГРУЗ - ЛЮБОВЬ (стиль) -->
+    <audio id="bgMusic" loop volume="0.3">
+        <source src="https://audio.jukehost.co.uk/5cXUbhzKOXTnTQkbRmSRCPkPynGxv83m" type="audio/mpeg">
     </audio>
     <button id="musicToggle">🎵 Любовь</button>
 
@@ -160,68 +182,75 @@
         <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Празднуем">
         <h2>Урааа! ❤️🔥</h2>
         <p>Теперь мы вместе навсегда! 💑✨</p>
+        
+        <!-- НАШИ ФОТО - ЗАМЕНИ ССЫЛКИ! -->
+        <div class="photo-gallery">
+            <img src="https://ru.files.fm/f/sw8gz4xqpd" class="photo" alt="Мы 💕">
+            <img src="https://ru.files.fm/f/swe62cjjug" class="photo" alt="Вместе ❤️">
+            <img src="https://ru.files.fm/u/btrb5jsg3y" class="photo" alt="Любовь 💖">
+            <img src="https://ru.files.fm/f/erz8dygcx6" class="photo" alt="Навсегда ✨">
+        </div>
     </div>
 
     <script>
-        // Основная логика кнопок
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         const success = document.getElementById('success');
         const buttons = document.querySelector('.buttons');
+        const music = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
 
+        // КНОПКА НЕТ - НЕ УЛЕТАЕТ Далеко
         noBtn.addEventListener('click', () => {
-            const maxX = window.innerWidth - 150;
-            const maxY = window.innerHeight - 250;
-            const newX = Math.random() * maxX;
-            const newY = Math.random() * maxY;
+            const rect = buttons.getBoundingClientRect();
+            const maxX = window.innerWidth - 120;  // Оставляем отступы
+            const maxY = window.innerHeight - 150;
+            const newX = Math.max(50, Math.min(maxX, Math.random() * maxX));
+            const newY = Math.max(100, Math.min(maxY, Math.random() * maxY));
             
+            noBtn.style.position = 'fixed';
             noBtn.style.left = newX + 'px';
             noBtn.style.top = newY + 'px';
-            noBtn.style.animation = 'none';
-            setTimeout(() => noBtn.style.animation = 'wiggle 0.5s infinite', 100);
+            noBtn.style.transform = 'translate(-50%, -50%)';
         });
 
+        // КНОПКА ДА + КОНФЕТТИ
         yesBtn.addEventListener('click', () => {
             buttons.style.display = 'none';
             success.style.display = 'block';
             
-            // Конфетти!
-            for(let i = 0; i < 100; i++) {
+            for(let i = 0; i < 80; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('div');
-                    confetti.innerHTML = ['❤️','💖','💕','✨','🌸','💫'][Math.floor(Math.random()*6)];
+                    confetti.innerHTML = ['❤️','💖','💕','✨','🌸','💫
+                                          '][Math.floor(Math.random()*6)];
                     confetti.style.cssText = `
-                        position: fixed; left: ${Math.random() * 100}vw; top: -10px;
-                        font-size: 20px; pointer-events: none;
-                        animation: float 3s linear forwards;
+                        position: fixed; left: ${Math.random() * 100}vw; top: -20px;
+                        font-size: 18px; pointer-events: none; z-index: 50;
+                        animation: float 4s linear forwards;
                     `;
                     document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 3000);
-                }, i * 20);
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 25);
             }
         });
 
-        // 🎵 МУЗЫКА - РАБОТАЕТ ГАРАНТИРОВАННО
-        const music = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-
+        // МУЗЫКА
         musicToggle.addEventListener('click', () => {
             if (music.paused) {
                 music.play();
-                musicToggle.innerHTML = '🔇 Тихо';
-                musicToggle.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+                musicToggle.innerHTML = '🔇';
+                musicToggle.style.background = '#4CAF50';
             } else {
                 music.pause();
-                musicToggle.innerHTML = '🎵 Любовь';
+                musicToggle.innerHTML = '🎵';
                 musicToggle.style.background = 'linear-gradient(45deg, #ff6b9d, #c44569)';
             }
         });
 
-        // Автозапуск по первому клику
-        document.addEventListener('click', function startMusic() {
-            music.play().cat
-ch(() => {});
-            document.removeEventListener('click', startMusic);
+        // Автозапуск музыки по клику
+        document.addEventListener('click', () => {
+            music.play().catch(() => {});
         }, { once: true });
     </script>
 </body>
