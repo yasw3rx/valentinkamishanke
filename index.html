@@ -95,6 +95,8 @@
             animation: bounceIn 1s ease;
             width: 100%;
             z-index: 50;
+            flex-direction: column;
+            align-items: center;
         }
         @keyframes bounceIn {
             0% { transform: scale(0); opacity: 0; }
@@ -128,13 +130,15 @@
             margin: 0 auto;
         }
         .photo {
-            width: 80px;
-            height: 80px;
+            width: 85px !important; 
+            height: 85px !important;
+            main-height: 85px;
             border-radius: 15px;
             object-fit: cover;
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
             border: 3px solid #ff6b9d;
             transition: all 0.3s;
+            background: #ddd; /* Если фото не грузится */
         }
         .photo:hover {
             transform: scale(1.1);
@@ -178,14 +182,14 @@
     </div>
     
     <div id="success" class="success">
-        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Празднуем">
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Празднуем" loading="lazy">
         <h2>Урааа! ❤️🔥</h2>
         <p>Теперь мы вместе навсегда! 💑✨</p>
         
         <div class="photo-gallery">
-            <img src="https://raw.githubusercontent.com/yasw3rx/valentinkamishanke/blob/main/photo_2026-02-12_00-24-08%20(2).jpg" class="photo">
-            <img src="https://raw.githubusercontent.com/yasw3rx/valentinkamishanke/blob/main/photo_2026-02-12_02-41-49.jpg" class="photo">
-            <img src="https://raw.githubusercontent.com/yasw3rx/valentinkamishanke/blob/main/photo_2026-02-12_00-24-08.jpg" class="photo">
+            <img src="https://raw.githubusercontent.com/yasw3rx/valentinkamishanke/main/photo_2026-02-12_00-24-08%20(2).jpg" class="photo" loading="lazy" alt="Фото 1"> 
+            <img src="https://raw.githubusercontent.com/yasw3rx/valentinkamishanke/main/photo_2026-02-12_02-41-49.jpg" class="photo" loading="lazy" alt="Фото 2">
+            <img src="https://raw.githubusercontent.com/yasw3rx/valentinkamishanke/main/photo_2026-02-12_00-24-08.jpg" class="photo" loading="lazy" alt="Фото 3">
         </div>
     </div>
 
@@ -249,6 +253,7 @@
     </script>
 </body>
 </html>
+
 
 
 
